@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex">
+        <!-- Sidebar (collapsible on mobile) -->
+        <aside id="sidebar" class="w-64 bg-gray-800 text-gray-200 p-4 fixed inset-y-0 left-0 transform -translate-x-full transition-transform duration-300 md:relative md:translate-x-0">
+            <h2 class="text-2xl font-bold">Dashboard</h2>
+            <nav class="mt-6">
+                <ul>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 bg-[#4BC0C0] rounded-md flex items-center">
+                            <i class="fas fa-home hidden lg:inline-block mr-2"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="fas fa-chart-line hidden lg:inline-block mr-2"></i>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="fas fa-shopping-cart hidden lg:inline-block mr-2"></i>
+                            Sales
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="fas fa-user-alt hidden lg:inline-block mr-2"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="fas fa-paper-plane hidden lg:inline-block mr-2"></i>
+                            Sener Analysis
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="far fa-clock hidden lg:inline-block mr-2"></i>
+                            Reminder
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="fas fa-cog hidden lg:inline-block mr-2"></i>
+                            Setting
+                        </a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded flex items-center">
+                            <i class="fas fa-refresh hidden lg:inline-block mr-2"></i>
+                            Update
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Mobile Menu Button -->
+        <div class="fixed top-4 left-4 md:hidden">
+            <button id="menu-btn" class="text-gray-200 bg-gray-800 p-2 rounded-md focus:outline-none focus:bg-gray-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col ">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-md p-4 flex  justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-semibold">Dashboard</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <input type="text" placeholder="Search..." class="p-2 border rounded-md">
+                    <img src="profile.png" alt="User Profile" class="w-10 h-10 rounded-full border-2 border-gray-300">
+                </div>
+            </header>
+
+            <!-- Dashboard Stats -->
+            <main class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Overall Traffic Card -->
+                <div class="bg-white p-4 shadow-md rounded-md">
+                    <h3 class="text-lg font-semibold">Overall Traffic</h3>
+                    <p class="text-2xl font-bold">12,345</p>
+                    <span class="text-sm text-green-500">+5% from last week</span>
+                </div>
+
+                <!-- Total Users Card -->
+                <div class="bg-white p-4 shadow-md rounded-md">
+                    <h3 class="text-lg font-semibold">Total Users</h3>
+                    <p class="text-2xl font-bold">9,876</p>
+                    <span class="text-sm text-green-500">+8% from last week</span>
+                </div>
+
+                <!-- Active Users Card -->
+                <div class="bg-white p-4 shadow-md rounded-md">
+                    <h3 class="text-lg font-semibold">Active Users</h3>
+                    <p class="text-2xl font-bold">567</p>
+                    <span class="text-sm text-red-500">-3% from last week</span>
+                </div>
+
+                <!-- Sales Revenue Card -->
+                <div class="bg-white p-4 shadow-md rounded-md">
+                    <h3 class="text-lg font-semibold">Sales Revenue</h3>
+                    <p class="text-2xl font-bold">$45,678</p>
+                    <span class="text-sm text-green-500">+10% from last week</span>
+                </div>
+            </main>
+
+            <!-- Graphs & Detailed Data -->
+            <section class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Sales Revenue Bar Chart -->
+                    <div class="bg-white p-4 shadow-md rounded-md">
+                        <h3 class="text-lg font-semibold">Sales Overview</h3>
+                        <canvas id="salesChart" class="h-48"></canvas>
+                    </div>
+
+                    <!-- Traffic Overview Line Chart -->
+                    <div class="bg-white p-4 shadow-md rounded-md">
+                        <h3 class="text-lg font-semibold">Traffic Overview</h3>
+                        <canvas id="trafficChart" class="h-48"></canvas>
+                    </div>
+
+                    <!-- Overall Traffic Pie Chart -->
+                    <div class="bg-white p-4 shadow-md rounded-md">
+                        <h3 class="text-lg font-semibold">Traffic Breakdown</h3>
+                        <canvas id="trafficPieChart" class="h-48"></canvas>
+                    </div>
+
+                    <!-- Active Users Table -->
+                    <div class="bg-white p-4 shadow-md rounded-md">
+                        <h3 class="text-lg font-semibold">Active Users</h3>
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="w-1/3 px-4 py-2">Name</th>
+                                    <th class="w-1/3 px-4 py-2">Email</th>
+                                    <th class="w-1/3 px-4 py-2">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border px-4 py-2">John Doe</td>
+                                    <td class="border px-4 py-2">john@example.com</td>
+                                    <td class="border px-4 py-2">Active</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-4 py-2">Jane Smith</td>
+                                    <td class="border px-4 py-2">jane@example.com</td>
+                                    <td class="border px-4 py-2">Active</td>
+                                </tr>
+                                <tr>
+                                    <td class="border px-4 py-2">Bob Johnson</td>
+                                    <td class="border px-4 py-2">bob@example.com</td>
+                                    <td class="border px-4 py-2">Inactive</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <footer class="bg-white p-4 shadow-md  fixed inset-x-0 bottom-0 z-10">
+                <p class="text-gray-600">&copy; 2024 Dashboard. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Chart.js Configuration -->
+    <script>
+        // Toggle sidebar visibility on mobile
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Sales Overview Bar Chart
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(salesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales Revenue ($)',
+                    data: [12000, 15000, 17000, 19000, 22000, 25000],
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue in $'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Traffic Overview Line Chart
+        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(trafficCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Website Traffic',
+                    data: [10000, 12000, 15000, 14000, 16000, 18000],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Traffic Volume'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Overall Traffic Pie Chart
+        const trafficPieCtx = document.getElementById('trafficPieChart').getContext('2d');
+        const trafficPieChart = new Chart(trafficPieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Direct', 'Referral', 'Social', 'Organic Search'],
+                datasets: [{
+                    label: 'Traffic Sources',
+                    data: [4000, 3000, 2000, 1000],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
